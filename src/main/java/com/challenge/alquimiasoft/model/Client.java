@@ -1,4 +1,5 @@
 package com.challenge.alquimiasoft.model;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +21,7 @@ public class Client {
     private String cellphone;
 
     private Long matriz_address_id;
+
     public Client() {
     }
 

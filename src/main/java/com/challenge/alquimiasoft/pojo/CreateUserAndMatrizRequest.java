@@ -1,4 +1,7 @@
-package com.challenge.alquimiasoft.model;
+package com.challenge.alquimiasoft.pojo;
+
+import com.challenge.alquimiasoft.model.Address;
+import com.challenge.alquimiasoft.model.Client;
 
 public class CreateUserAndMatrizRequest {
     private Client client;

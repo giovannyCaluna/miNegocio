@@ -1,4 +1,4 @@
-package com.challenge.alquimiasoft.model;
+package com.challenge.alquimiasoft.pojo;
 
 public class UserIdentificationRequest {
     private String name;

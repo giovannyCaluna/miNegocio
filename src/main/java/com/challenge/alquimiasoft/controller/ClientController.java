@@ -4,31 +4,25 @@ import com.challenge.alquimiasoft.IRepository.IAddressRepository;
 import com.challenge.alquimiasoft.IRepository.IClientRepository;
 import com.challenge.alquimiasoft.model.Address;
 import com.challenge.alquimiasoft.model.Client;
-import com.challenge.alquimiasoft.model.CreateUserAndMatrizRequest;
-import com.challenge.alquimiasoft.service.ClientService;
+import com.challenge.alquimiasoft.pojo.ClientRequest;
+import com.challenge.alquimiasoft.pojo.CreateUserAndMatrizRequest;
+import com.challenge.alquimiasoft.pojo.UserIdentificationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
 
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    @Autowired
-    private ClientService clientService;
     @Autowired
     private IClientRepository clientRepository;
 
-@Autowired
+    @Autowired
     private IAddressRepository addressRepository;
 
     @GetMapping("all")
@@ -39,53 +33,61 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ResponseEntity<List<Address>> getClientById(@PathVariable Long id) {
-    return ResponseEntity.ok(addressRepository.findAll()
-            .stream()
-            .filter(address -> address.getClient().getId().equals(1))
-            .collect(Collectors.toList()));
+        List<Address> response2 = (List<Address>) addressRepository.findByClientId(id);
+        return ResponseEntity.ok(response2);
+
     }
 
     @PostMapping("createClient")
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        return ResponseEntity.ok(clientRepository.save(client));
+    public ResponseEntity<Client> createClient(@RequestBody ClientRequest client) {
+        Client newClient = new Client(client.getIdentificationType(),
+                client.getIdentificationNumber(),
+                client.getName(),
+                client.getEmail(),
+                client.getCellphone(),
+                client.getMatriz_address_id());
+        return ResponseEntity.ok(clientRepository.save(newClient));
     }
-
 
     @PostMapping("createClientAndMatriz")
     public ResponseEntity<Client> createClientandMatriz(@RequestBody CreateUserAndMatrizRequest request) {
         Client client = clientRepository.save(request.getClient());
         request.getAddress().setClient(client);
-        Address address =  addressRepository.save(request.getAddress());
+        Address address = addressRepository.save(request.getAddress());
         client.setMatrizAddress(address.getId());
         clientRepository.save(client);
         return ResponseEntity.ok(client);
     }
 
     @GetMapping("/lookForClient")
-    public ResponseEntity <Iterable<Client>> searchClients(
-            @RequestParam(name = "identidad", required = false) String identification,
-            @RequestParam(name = "nombre", required = false) String name) {
+    public ResponseEntity<List<Client>> searchClients(@RequestBody UserIdentificationRequest request) {
 
-        return ResponseEntity.ok(clientService.searchClients(identification, name));
+        if (request.getName() != "" && request.getIdentification() != "") {
+            return ResponseEntity.ok(clientRepository.findBynameOrIdentification(request.getName(), request.getIdentification()));
+
+        }
+        if (request.getName() != null && request.getName() != "") {
+            return ResponseEntity.ok(clientRepository.findByname(request.getName()));
+
+        }
+        if (request.getIdentification() != null && request.getIdentification() != "") {
+            return ResponseEntity.ok(clientRepository.findByIdentification(request.getIdentification()));
+        }
+
+        return null;
     }
 
-    @PutMapping("update")
+    @PostMapping("update")
     public ResponseEntity<Client> updateClient(@RequestBody Client client) {
 
         return ResponseEntity.ok(clientRepository.save(client));
 
     }
+
     @PostMapping("remove")
     public ResponseEntity<Client> removeClient(@RequestBody Client client) {
-        addressRepository.findAll().stream().map(address -> {
-
-            if (address.getClient().getId() == client.getId()) {
-                addressRepository.delete(address);
-            }
-            return null;
-        });
-            clientRepository.delete(client);
-
+        addressRepository.deleteAll(addressRepository.findByClientId(client.getId()));
+        clientRepository.delete(client);
         return ResponseEntity.ok(client);
 
     }
@@ -94,7 +96,6 @@ public class ClientController {
     public ResponseEntity<Address> updateAddress(@RequestBody Address address) {
         return ResponseEntity.ok(addressRepository.save(address));
     }
-
 
 
 }
