@@ -61,4 +61,13 @@ public class ClientRequest {
     public void setMatriz_address_id(Long matriz_address_id) {
         this.matriz_address_id = matriz_address_id;
     }
+
+    public ClientRequest(String identificationType, String identificationNumber, String name, String email, String cellphone, Long matriz_address_id) {
+        this.identificationType = identificationType;
+        this.identificationNumber = identificationNumber;
+        this.name = name;
+        this.email = email;
+        this.cellphone = cellphone;
+        this.matriz_address_id = matriz_address_id;
+    }
 }

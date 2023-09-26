@@ -1,4 +1,2 @@
 # miNegocio
-EL projectyo esta desarrollado en Springboot. El proyecto cumple con las especificaciones detalladas en el pdf adjunto.
-Ademas, el proyecto cuenta con un archivo sql para crear el modelo de base de datos. Ademas, una collecion para el testeo de al aplicacion.
-
+El proyecto está desarrollado en Spring Boot y cumple con las especificaciones detalladas en el PDF adjunto. Además, el proyecto cuenta con un archivo SQL para crear el modelo de base de datos y una colección para el testeo de la aplicación.

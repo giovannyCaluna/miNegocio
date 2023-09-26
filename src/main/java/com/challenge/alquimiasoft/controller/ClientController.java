@@ -59,7 +59,7 @@ public class ClientController {
         return ResponseEntity.ok(client);
     }
 
-    @GetMapping("/lookForClient")
+    @PostMapping("/lookForClient")
     public ResponseEntity<List<Client>> searchClients(@RequestBody UserIdentificationRequest request) {
 
         if (request.getName() != "" && request.getIdentification() != "") {

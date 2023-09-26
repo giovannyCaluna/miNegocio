@@ -19,4 +19,9 @@ public class UserIdentificationRequest {
     public void setIdentification(String identification) {
         this.identification = identification;
     }
+
+    public UserIdentificationRequest(String name, String identification) {
+        this.name = name;
+        this.identification = identification;
+    }
 }

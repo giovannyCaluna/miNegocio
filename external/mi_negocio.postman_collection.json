@@ -7,11 +7,8 @@
 	"item": [
 		{
 			"name": "buscarCliente",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -62,14 +59,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/addresses/all",
+					"raw": "http://localhost:8080/clients/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"addresses",
+						"clients",
 						"all"
 					]
 				}
@@ -115,7 +112,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "   {\r\n        \"id\": 1,\r\n        \"calle\": \"Sample Street 1\",\r\n        \"ciudad\": \"Sample City 1\",\r\n        \"pais\": \"Sample Country 1\",\r\n        \"client\": {\r\n            \"id\": 1,\r\n            \"identificationType\": \"DNI\",\r\n            \"identificationNumber\": \"12121212\",\r\n            \"name\": \"Daniel Sandoval\",\r\n            \"email\": \"dani@test.com\",\r\n            \"cellphone\": \"000000\",\r\n            \"matrizAddress\": 1\r\n        }\r\n    },",
+					"raw": "{\r\n    \"identificationType\": \"Passport\",\r\n    \"identificationNumber\": \"12121212\",\r\n    \"name\": \"Daniel Sandoval\",\r\n    \"email\": \"dani@test.com\",\r\n    \"cellphone\": \"000000\",\r\n    \"matrizAddress\": null\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,7 +141,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "   {\r\n        \"id\": 1,\r\n        \"calle\": \"Sample Street 1\",\r\n        \"ciudad\": \"Sample City 1\",\r\n        \"pais\": \"Sample Country 1\",\r\n        \"client\": {\r\n            \"id\": 1,\r\n            \"identificationType\": \"DNI\",\r\n            \"identificationNumber\": \"12121212\",\r\n            \"name\": \"Daniel Sandoval\",\r\n            \"email\": \"dani@test.com\",\r\n            \"cellphone\": \"000000\",\r\n            \"matrizAddress\": 1\r\n        }\r\n    },",
+					"raw": "{\r\n    \"id\": 25,\r\n    \"identificationType\": \"Passport\",\r\n    \"identificationNumber\": \"12121212\",\r\n    \"name\": \"Daniel Sandoval\",\r\n    \"email\": \"dani@test.com\",\r\n    \"cellphone\": \"000000\",\r\n    \"matrizAddress\": null\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -152,7 +149,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/clients/create",
+					"raw": "http://localhost:8080/clients/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -160,7 +157,7 @@
 					"port": "8080",
 					"path": [
 						"clients",
-						"create"
+						"update"
 					]
 				}
 			},
@@ -202,7 +199,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"id\": 1,\r\n        \"identificationType\": \"DNI\",\r\n        \"identificationNumber\": \"12121212\",\r\n        \"name\": \"Daniel Sandoval\",\r\n        \"email\": \"dani@test.com\",\r\n        \"cellphone\": \"000000\",\r\n        \"matrizAddress\": 1\r\n    }",
+					"raw": " {\r\n        \"identificationType\": \"DNI\",\r\n        \"identificationNumber\": \"12121212\",\r\n        \"name\": \"Daniel Sandoval\",\r\n        \"email\": \"dani@test.com\",\r\n        \"cellphone\": \"000000\",\r\n        \"matrizAddress\": 1\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -210,7 +207,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/clients/remove",
+					"raw": "http://localhost:8080/clients/createClient",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -218,7 +215,7 @@
 					"port": "8080",
 					"path": [
 						"clients",
-						"remove"
+						"createClient"
 					]
 				}
 			},
@@ -257,7 +254,19 @@
 			"name": "clientsById",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/clients/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"2"
+					]
+				}
 			},
 			"response": []
 		}
