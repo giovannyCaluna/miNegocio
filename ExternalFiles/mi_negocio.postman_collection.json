@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "04a5bd8b-101e-422c-9130-a452fe299e99",
+		"name": "mi_negocio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "buscarCliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"D\",\r\n    \"identification\": \"9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clients/lookForClient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"lookForClient"
+					],
+					"query": [
+						{
+							"key": "identidad",
+							"value": "\"34343434\"",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getClientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"calle\": \"Av. Principal 999999\",\r\n    \"ciudad\": \"Urcucqui\",\r\n    \"pais\": \"Ecuador\",\r\n    \"client_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/addresses/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addresses",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAddress",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"calle\": \"Av. Principal 999999\",\r\n    \"ciudad\": \"Urcucqui\",\r\n    \"pais\": \"Ecuador\",\r\n    \"client_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/addresses/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addresses",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"id\": 1,\r\n        \"calle\": \"Sample Street 1\",\r\n        \"ciudad\": \"Sample City 1\",\r\n        \"pais\": \"Sample Country 1\",\r\n        \"client\": {\r\n            \"id\": 1,\r\n            \"identificationType\": \"DNI\",\r\n            \"identificationNumber\": \"12121212\",\r\n            \"name\": \"Daniel Sandoval\",\r\n            \"email\": \"dani@test.com\",\r\n            \"cellphone\": \"000000\",\r\n            \"matrizAddress\": 1\r\n        }\r\n    },",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clients/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"id\": 1,\r\n        \"calle\": \"Sample Street 1\",\r\n        \"ciudad\": \"Sample City 1\",\r\n        \"pais\": \"Sample Country 1\",\r\n        \"client\": {\r\n            \"id\": 1,\r\n            \"identificationType\": \"DNI\",\r\n            \"identificationNumber\": \"12121212\",\r\n            \"name\": \"Daniel Sandoval\",\r\n            \"email\": \"dani@test.com\",\r\n            \"cellphone\": \"000000\",\r\n            \"matrizAddress\": 1\r\n        }\r\n    },",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clients/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 1,\r\n        \"identificationType\": \"DNI\",\r\n        \"identificationNumber\": \"12121212\",\r\n        \"name\": \"Daniel Sandoval\",\r\n        \"email\": \"dani@test.com\",\r\n        \"cellphone\": \"000000\",\r\n        \"matrizAddress\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clients/remove",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"remove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 1,\r\n        \"identificationType\": \"DNI\",\r\n        \"identificationNumber\": \"12121212\",\r\n        \"name\": \"Daniel Sandoval\",\r\n        \"email\": \"dani@test.com\",\r\n        \"cellphone\": \"000000\",\r\n        \"matrizAddress\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clients/remove",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"remove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUserAndMAatriz",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": {\r\n        \"calle\": \"Sample Postman 1\",\r\n        \"ciudad\": \"Sample Postman 1\",\r\n        \"pais\": \"Sample Postman 1\"\r\n        \r\n    },\r\n    \"client\": {\r\n        \"identificationType\": \"DNI\",\r\n        \"identificationNumber\": \"12121212\",\r\n        \"name\": \"Daniel Postman\",\r\n        \"email\": \"dani@test.com\",\r\n        \"cellphone\": \"000000\",\r\n        \"matrizAddress\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clients/createClientAndMatriz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clients",
+						"createClientAndMatriz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clientsById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
